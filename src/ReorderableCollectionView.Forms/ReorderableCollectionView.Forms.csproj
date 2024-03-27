@@ -1,7 +1,7 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.41">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.1.2">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;netstandard2.0;Xamarin.iOS10;MonoAndroid10.0;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid13.0;</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.16299;</TargetFrameworks>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <AssemblyName>ReorderableCollectionView.Forms</AssemblyName>
@@ -15,6 +15,7 @@
     <PackageProjectUrl>https://github.com/billvenhaus/ReorderableCollectionView.Forms</PackageProjectUrl>
     <RepositoryUrl>https://github.com/billvenhaus/ReorderableCollectionView.Forms</RepositoryUrl>
     <PackageTags>xamarin forms reorderablecollectionview collectionview xamarinforms reorderablecollectionview.forms xamarin.forms.collectionview</PackageTags>
+    <BuildWithMSBuildOnMono>true</BuildWithMSBuildOnMono>
   </PropertyGroup>  
   
   <!-- Define what happens on build and release -->
@@ -31,7 +32,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
   </ItemGroup>
 
   <ItemGroup>
