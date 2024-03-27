@@ -83,7 +83,6 @@ namespace ReorderableCollectionView.Forms
 					NotifyItemMoved(fromPosition, toPosition);
 					SetObserveChanges(fromItemsSource, true);
 					SetObserveChanges(toItemsSource, true);
-					itemsView.SendReorderCompleted();
 					return true;
 				}
 			}
@@ -95,10 +94,22 @@ namespace ReorderableCollectionView.Forms
 				list.Insert(toPosition, fromItem);
 				NotifyItemMoved(fromPosition, toPosition);
 				SetObserveChanges(itemsSource, true);
-				itemsView.SendReorderCompleted();
 				return true;
 			}
 			return false;
+		}
+
+		public void OnMoveFinish()
+		{
+			var itemsSource = ItemsSource;
+			var itemsView = ItemsView;
+
+			if (itemsSource == null || itemsView == null)
+			{
+				return;
+			}
+
+			itemsView.SendReorderCompleted();
 		}
 
 		void SetObserveChanges(IItemsViewSource itemsSource, bool enable)

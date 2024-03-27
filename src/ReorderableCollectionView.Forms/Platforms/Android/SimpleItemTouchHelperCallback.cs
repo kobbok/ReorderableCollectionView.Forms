@@ -13,7 +13,20 @@ namespace ReorderableCollectionView.Forms
 		{
 		}
 
-		public override int GetMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder)
+        public override void OnSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState)
+        {
+			switch (actionState)
+			{
+				case ItemTouchHelper.ActionStateDrag:
+					break;
+				case ItemTouchHelper.ActionStateIdle:
+					// Set to this when drag ends
+					_adapter?.OnMoveFinish();
+					break;
+			}
+        }
+
+        public override int GetMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder)
 		{
 			var itemViewType = viewHolder.ItemViewType;
 			if (itemViewType == ItemViewType.Header || itemViewType == ItemViewType.Footer
